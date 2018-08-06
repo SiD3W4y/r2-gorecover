@@ -1,6 +1,6 @@
 NAME=gorecover
 R2_PLUGIN_PATH=$(shell r2 -hh|grep LIBR_PLUGINS|awk '{print $$2}')
-CFLAGS=-g -fPIC $(shell pkg-config --cflags r_core) -I ../include
+CFLAGS=-g -fPIC $(shell pkg-config --cflags r_core)
 LDFLAGS=-shared $(shell pkg-config --libs r_core)
 SO_EXT=$(shell uname|grep -q Darwin && echo dylib || echo so)
 
