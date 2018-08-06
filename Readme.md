@@ -3,6 +3,10 @@
 gorecover is a radare2 plugin that can recover symbols from stripped go executables. It could be useful
 for ctf challenges, malware analysis or even day to day reverse engineeing of proprietary software.
 
+The plugin was tested on 64bits PE/ELF files and worked. A workaround was necessary on PE files since there is
+no .gopclntab section, and since it resorts to byte pattern matching there is a risk (albeit small) of false 
+positives. It was not tested on Mach-o files but if the structure is the same it should work.
+
 ## Installation and Usage
 To install simply clone the repository and run
 ```
