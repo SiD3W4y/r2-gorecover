@@ -40,7 +40,7 @@ $ r2 test
 
 ## Recovery process
 The recovery process is simple. Every go executable (from what I have seen) has a .gopclntab. It is a section
-containing debug informations about functions (such as virtual address, file of origin, etc...). When a go executable is stripped only the symtab is remove, and from this debugging info we can thus recover the symbols.
+containing debug information about functions (such as virtual address, file of origin, etc...). When a go executable is stripped only the symtab is removed, and from this debugging info we can thus recover the symbols.
 The section is structured as such:
 
 ```
@@ -48,7 +48,7 @@ The section is structured as such:
 - padding_zeroes: u16
 - quantum: u8
 - usize: u8
-- functab_count: u8
+- functab_count: usize
 - functab_array: [functab entry] * func
 - ... whole lot of data we don't care about
 
