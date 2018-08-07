@@ -10,8 +10,8 @@ positives. It was not tested on Mach-o files but if the structure is the same it
 ## Installation and Usage
 To install simply clone the repository and run
 ```
-$ make all
-$ make install
+$ r2pm -r make all
+$ r2pm -r make install
 ```
 
 You can then use the plugin from inside radare2 by running the "gorec" command
