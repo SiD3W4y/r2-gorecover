@@ -53,9 +53,10 @@ static void __process_section(RCore *core, ut64 base)
         r_io_nread_at(core->io, base + entry_info + ptrsize, buffer, sizeof(buffer));
         stroffset = *(ut32 *)&buffer[0];
         r_io_nread_at(core->io, base + stroffset, buffer, sizeof(buffer));
-
-        r_core_cmd(core, "fs symbols", 0);
-        snprintf(format_buff, sizeof(format_buff), "f sym.%s @ 0x%lx\n", buffer, entry_pc);
+        
+        r_flag_space_set(core->flags, "symbols");
+        
+        snprintf(format_buff, sizeof(format_buff), "sym.%s", buffer);
 
         // Part 3: Cleaning input a bit
         for(y = 0; y < sizeof(format_buff); y++){
@@ -66,6 +67,8 @@ static void __process_section(RCore *core, ut64 base)
                     format_buff[y] = '_';
             }
         }
+        
+        r_flag_set(core->flags, format_buff, entry_pc, 1); 
 
         // Part 4: Registering the symbol
         r_core_cmd(core, format_buff, 0);
