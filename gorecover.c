@@ -68,10 +68,8 @@ static void __process_section(RCore *core, ut64 base)
             }
         }
         
-        r_flag_set(core->flags, format_buff, entry_pc, 1); 
-
         // Part 4: Registering the symbol
-        r_core_cmd(core, format_buff, 0);
+        r_flag_set(core->flags, format_buff, entry_pc, 1); 
     }
 }
 
